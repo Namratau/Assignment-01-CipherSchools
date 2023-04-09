@@ -1,4 +1,4 @@
-import 'package:ciperschools/widgets/carousel_widget.dart';
+import '/widgets/carousel_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_face_pile/flutter_face_pile.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -157,7 +157,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          const CarouselWidget(),
+          const CarouselWidget(viewPortRatio: 0.8),
         ],
       ),
     );

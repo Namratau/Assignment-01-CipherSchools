@@ -1,5 +1,7 @@
+import 'package:ciperschools/widgets/container_item.dart';
+
+import '/widgets/carousel_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:slider_button/slider_button.dart';
 
 class CoursesPage extends StatelessWidget {
   const CoursesPage({Key? key}) : super(key: key);
@@ -7,6 +9,7 @@ class CoursesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black87,
       appBar: AppBar(
         // Please ignore the cipher-schools icon I have no icon readily available.
         // I will be take care of it after.
@@ -17,28 +20,67 @@ class CoursesPage extends StatelessWidget {
           style: TextStyle(),
         ),
         actions: [
-        Center(child: SliderButton(
-          icon: const Center(
-              child: Icon(
-                Icons.power_settings_new,
-                color: Colors.white,
-                size: 20.0,
-                semanticLabel: 'Text to announce in accessibility modes',
-              ),),
-          action: () {
-            ///Do something here
-            print("Ho");
-            // Navigator.of(context).pop();
-          },
-          label: const Text(
-            "Slide to cancel Event",
-            style: TextStyle(
-                color: Color(0xff4a4a4a), fontWeight: FontWeight.w500, fontSize: 17),
+          // const DropdownMenu(
+          //   label: Text("Browse"),
+          //   width: 2,
+          //   dropdownMenuEntries: [DropdownMenuEntry(value: 0, label: "Hi")],
+          // ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.notifications),
           ),
-        ),),
-          const Icon(Icons.notifications),
-          const Icon(Icons.search),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          ),
         ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          children: [
+            const CarouselWidget(viewPortRatio: 1),
+            const SizedBox(height: 10,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text("Recommended Courses", style: TextStyle(
+                  fontSize: 17.5,
+                  color: Colors.orange,
+                ),),
+                DropdownMenu(
+                  textStyle: TextStyle(
+                    color: Colors.orange,
+                  ),
+                  initialSelection: 0,
+                  inputDecorationTheme: InputDecorationTheme(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8),),
+                    )
+                  ),
+                  menuStyle: MenuStyle(
+                    backgroundColor: MaterialStatePropertyAll(Colors.orange,),
+                  ),
+                  dropdownMenuEntries: [
+                    DropdownMenuEntry(value: 0, label: "Popular"),
+                    DropdownMenuEntry(value: 1, label: "Highlighted"),
+                    DropdownMenuEntry(value: 2, label: "Most Chosen"),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 30),
+            SizedBox(
+              height: 400,
+              child: ListView.builder(
+                itemCount: 10,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return const ContainerItem();
+                },),
+            )
+          ],
+        ),
       ),
     );
   }
