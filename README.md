@@ -4,5 +4,5 @@ A new Flutter project.
 
 As mentioned in the project I have attached the application in the repository.
 
-![Screenshot1](Screenshot1.png)
-![Screenshot2](Screenshot2.png)
+<img src="Screenshot1" alt="" height="300">
+<img src="Screenshot2" alt="" height="300">
